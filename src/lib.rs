@@ -266,6 +266,7 @@
 // here's the code for you to find some more!
 extern crate core;
 extern crate alloc;
+extern crate parking_lot;
 
 use std::sync::Arc;
 use std::error;

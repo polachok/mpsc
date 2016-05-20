@@ -28,7 +28,7 @@ use ::blocking::{self, SignalToken};
 use ::mpsc_queue as mpsc;
 use ::select::StartResult::*;
 use ::select::StartResult;
-use std::sync::{Mutex, MutexGuard};
+use ::parking_lot::{Mutex, MutexGuard};
 use std::thread;
 
 const DISCONNECTED: isize = isize::MIN;
@@ -85,7 +85,7 @@ impl<T> Packet<T> {
     // and that could cause problems on platforms where it is
     // represented by opaque data structure
     pub fn postinit_lock(&self) -> MutexGuard<()> {
-        self.select_lock.lock().unwrap()
+        self.select_lock.lock()
     }
 
     // This function is used at the creation of a shared packet to inherit a
@@ -434,7 +434,7 @@ impl<T> Packet<T> {
         // about looking at and dealing with to_wake. Once we have acquired the
         // lock, we are guaranteed that inherit_blocker is done.
         {
-            let _guard = self.select_lock.lock().unwrap();
+            let _guard = self.select_lock.lock();
         }
 
         // Like the stream implementation, we want to make sure that the count
