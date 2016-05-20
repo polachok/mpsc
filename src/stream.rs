@@ -24,12 +24,12 @@ use self::Message::*;
 
 use core::cmp;
 use core::isize;
-use thread;
+use std::thread;
 
-use sync::atomic::{AtomicIsize, AtomicUsize, Ordering, AtomicBool};
-use sync::mpsc::Receiver;
-use sync::mpsc::blocking::{self, SignalToken};
-use sync::mpsc::spsc_queue as spsc;
+use std::sync::atomic::{AtomicIsize, AtomicUsize, Ordering, AtomicBool};
+use ::Receiver;
+use ::blocking::{self, SignalToken};
+use ::spsc_queue as spsc;
 
 const DISCONNECTED: isize = isize::MIN;
 #[cfg(test)]

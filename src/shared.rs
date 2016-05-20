@@ -23,13 +23,13 @@ pub use self::Failure::*;
 use core::cmp;
 use core::isize;
 
-use sync::atomic::{AtomicUsize, AtomicIsize, AtomicBool, Ordering};
-use sync::mpsc::blocking::{self, SignalToken};
-use sync::mpsc::mpsc_queue as mpsc;
-use sync::mpsc::select::StartResult::*;
-use sync::mpsc::select::StartResult;
-use sync::{Mutex, MutexGuard};
-use thread;
+use std::sync::atomic::{AtomicUsize, AtomicIsize, AtomicBool, Ordering};
+use ::blocking::{self, SignalToken};
+use ::mpsc_queue as mpsc;
+use ::select::StartResult::*;
+use ::select::StartResult;
+use std::sync::{Mutex, MutexGuard};
+use std::thread;
 
 const DISCONNECTED: isize = isize::MIN;
 const FUDGE: isize = 1024;

@@ -10,12 +10,12 @@
 
 //! Generic support for building blocking abstractions.
 
-use thread::{self, Thread};
-use sync::atomic::{AtomicBool, Ordering};
-use sync::Arc;
-use marker::{Sync, Send};
-use mem;
-use clone::Clone;
+use std::thread::{self, Thread};
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
+use std::marker::{Sync, Send};
+use std::mem;
+use std::clone::Clone;
 
 struct Inner {
     thread: Thread,

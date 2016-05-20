@@ -48,6 +48,7 @@
 //! ```
 
 #![allow(dead_code)]
+/*
 #![unstable(feature = "mpsc_select",
             reason = "This implementation, while likely sufficient, is unsafe and \
                       likely to be error prone. At some point in the future this \
@@ -56,17 +57,17 @@
                       to select over a number of channels will remain forever, \
                       but no guarantees beyond this are being made",
             issue = "27800")]
+*/
 
-
-use fmt;
+use std::fmt;
 
 use core::cell::{Cell, UnsafeCell};
 use core::marker;
 use core::ptr;
 use core::usize;
 
-use sync::mpsc::{Receiver, RecvError};
-use sync::mpsc::blocking::{self, SignalToken};
+use ::{Receiver, RecvError};
+use ::blocking::{self, SignalToken};
 
 /// The "receiver set" of the select interface. This structure is used to manage
 /// a set of receivers which are being selected over.
@@ -352,14 +353,12 @@ impl Iterator for Packets {
     }
 }
 
-#[stable(feature = "mpsc_debug", since = "1.7.0")]
 impl fmt::Debug for Select {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "Select {{ .. }}")
     }
 }
 
-#[stable(feature = "mpsc_debug", since = "1.7.0")]
 impl<'rx, T:Send+'rx> fmt::Debug for Handle<'rx, T> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "Handle {{ .. }}")

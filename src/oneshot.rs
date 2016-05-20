@@ -37,10 +37,10 @@ pub use self::UpgradeResult::*;
 pub use self::SelectionResult::*;
 use self::MyUpgrade::*;
 
-use sync::mpsc::Receiver;
-use sync::mpsc::blocking::{self, SignalToken};
+use ::Receiver;
+use ::blocking::{self, SignalToken};
 use core::mem;
-use sync::atomic::{AtomicUsize, Ordering};
+use std::sync::atomic::{AtomicUsize, Ordering};
 
 // Various states you can find a port in.
 const EMPTY: usize = 0;          // initial state: no data, no blocked receiver

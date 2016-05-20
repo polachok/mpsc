@@ -36,14 +36,14 @@
 pub use self::Failure::*;
 use self::Blocker::*;
 
-use vec::Vec;
+use std::vec::Vec;
 use core::mem;
 use core::ptr;
 
-use sync::atomic::{Ordering, AtomicUsize};
-use sync::mpsc::blocking::{self, WaitToken, SignalToken};
-use sync::mpsc::select::StartResult::{self, Installed, Abort};
-use sync::{Mutex, MutexGuard};
+use std::sync::atomic::{Ordering, AtomicUsize};
+use ::blocking::{self, WaitToken, SignalToken};
+use ::select::StartResult::{self, Installed, Abort};
+use std::sync::{Mutex, MutexGuard};
 
 pub struct Packet<T> {
     /// Only field outside of the mutex. Just done for kicks, but mainly because

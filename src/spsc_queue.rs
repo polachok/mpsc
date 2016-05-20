@@ -37,7 +37,7 @@ use alloc::boxed::Box;
 use core::ptr;
 use core::cell::UnsafeCell;
 
-use sync::atomic::{AtomicPtr, AtomicUsize, Ordering};
+use std::sync::atomic::{AtomicPtr, AtomicUsize, Ordering};
 
 // Node within the linked list queue of messages to send
 struct Node<T> {
