@@ -368,10 +368,10 @@ impl<'rx, T:Send+'rx> fmt::Debug for Handle<'rx, T> {
 #[cfg(test)]
 #[allow(unused_imports)]
 mod tests {
-    use prelude::v1::*;
+    use std::prelude::v1::*;
 
-    use thread;
-    use sync::mpsc::*;
+    use std::thread;
+    use ::{Select,channel,sync_channel,Sender,Receiver,TryRecvError};
 
     // Don't use the libstd version so we can pull in the right Select structure
     // (std::comm points at the wrong one)

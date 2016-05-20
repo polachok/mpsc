@@ -148,12 +148,12 @@ impl<T> Drop for Queue<T> {
 
 #[cfg(test)]
 mod tests {
-    use prelude::v1::*;
+    use std::prelude::v1::*;
 
-    use sync::mpsc::channel;
+    use ::channel;
     use super::{Queue, Data, Empty, Inconsistent};
-    use sync::Arc;
-    use thread;
+    use std::sync::Arc;
+    use std::thread;
 
     #[test]
     fn test_full() {

@@ -1,4 +1,4 @@
-#![feature(optin_builtin_traits,box_syntax,alloc,reflect_marker)]
+#![feature(optin_builtin_traits,box_syntax,alloc,reflect_marker,slice_patterns)]
 // Copyright 2013-2014 The Rust Project Developers. See the COPYRIGHT
 // file at the top-level directory of this distribution and at
 // http://rust-lang.org/COPYRIGHT.
@@ -1089,11 +1089,11 @@ impl error::Error for TryRecvError {
 
 #[cfg(test)]
 mod tests {
-    use prelude::v1::*;
+    use std::prelude::v1::*;
 
-    use env;
+    use std::env;
     use super::*;
-    use thread;
+    use std::thread;
 
     pub fn stress_factor() -> usize {
         match env::var("RUST_TEST_STRESS") {
@@ -1637,10 +1637,10 @@ mod tests {
 
 #[cfg(test)]
 mod sync_tests {
-    use prelude::v1::*;
+    use std::prelude::v1::*;
 
-    use env;
-    use thread;
+    use std::env;
+    use std::thread;
     use super::*;
 
     pub fn stress_factor() -> usize {

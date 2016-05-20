@@ -32,7 +32,6 @@
 //! This module contains the implementation of an SPSC queue which can be used
 //! concurrently between two threads. This data structure is safe to use and
 //! enforces the semantics that there is one pusher and one popper.
-
 use alloc::boxed::Box;
 use core::ptr;
 use core::cell::UnsafeCell;
@@ -233,12 +232,12 @@ impl<T> Drop for Queue<T> {
 
 #[cfg(test)]
 mod tests {
-    use prelude::v1::*;
+    use std::prelude::v1::*;
 
-    use sync::Arc;
+    use std::sync::Arc;
     use super::Queue;
-    use thread;
-    use sync::mpsc::channel;
+    use std::thread;
+    use ::channel;
 
     #[test]
     fn smoke() {
