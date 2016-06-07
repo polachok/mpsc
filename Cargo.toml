@@ -4,4 +4,4 @@ version = "0.1.0"
 authors = ["Alexander Polakov <apolyakov@beget.ru>"]
 
 [dependencies]
-parking_lot = "0.1.2"
+parking_lot = "0.2.6"
